@@ -86,6 +86,14 @@ jobs:
           path:
             _site
           retention-days: 1
+      - name: success
+        if: needs.test.outputs.first_test != 'failure' && needs.test.outputs.second_test != 'failure' && needs.test.outputs.all != 'failure'
+        run: |
+          curl --location 'https://hooks.slack.com/services/${{ secrets.st_slack }}' --header 'Content-Type:application/json' --data '{"text": ":white_check_mark: Тестирование завершено. Отчет доступен здесь: https://rustambek-dot.github.io/LiveCoding/"}'
+      - name: failure
+        if: needs.test.outputs.first_test == 'failure' || needs.test.outputs.second_test == 'failure' || needs.test.outputs.all != 'failure'
+        run: |
+          curl --location 'https://hooks.slack.com/services/${{ secrets.st_slack }}' --header 'Content-Type:application/json' --data '{"text": ":rage: Тестирование завершено. Отчет доступен здесь: https://rustambek-dot.github.io/LiveCoding/"}'    
 
   publish-report:
     runs-on: ubuntu-latest
