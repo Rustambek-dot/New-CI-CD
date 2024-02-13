@@ -103,7 +103,7 @@ jobs:
       - name: success
         if: needs.test.outputs.first_test != 'failure' && needs.test.outputs.second_test != 'failure' && needs.test.outputs.all != 'failure'
         run: |
-          curl --location 'https://hooks.slack.com/services/${{ secrets.st_slack }}' --header 'Content-Type:application/json' --data '{"text":"Репозиторий доступен здесь:https://github.com/Rustambek-dot/New-CI-CD",":white_check_mark: Тестирование завершено. Отчет доступен здесь: https://rustambek-dot.github.io/LiveCoding/" }'
+          curl --location 'https://hooks.slack.com/services/${{ secrets.st_slack }}' --header 'Content-Type:application/json' --data '{"text":"Репозиторий доступен здесь:https://github.com/Rustambek-dot/New-CI-CD,:white_check_mark: Тестирование завершено. Отчет доступен здесь: https://rustambek-dot.github.io/LiveCoding/" }'
       - name: failure
         if: needs.test.outputs.first_test == 'failure' || needs.test.outputs.second_test == 'failure' || needs.test.outputs.all != 'failure'
         run: |
