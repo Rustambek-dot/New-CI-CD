@@ -18,7 +18,6 @@ def test_button_exist(browser):
 
 
 def test_button_exist_2(browser):
-    browser.get('https://www.qa-practice.com/elements/button/like_a_button')
-    assert browser.find_element(By.PARTIAL_LINK_TEXT, 'NotExistingText').is_displayed()
+    assert 1 == 2
 
 
