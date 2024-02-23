@@ -17,7 +17,7 @@ def test_button_exist(browser):
     assert browser.find_element(By.ID, 'submit-id-submit').is_displayed()
 
 
-def test_button_exist_2(browser):
+def test_button_exist_2():
     assert 1 == 2
 
 
