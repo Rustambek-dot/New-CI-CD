@@ -105,7 +105,7 @@ jobs:
         run: |
           curl --location 'https://hooks.slack.com/services/${{ secrets.st_slack }}' --header 'Content-Type:application/json' --data '{"text":"The repository is available here: https://github.com/Rustambek-dot/New-CI-CD/ ,:white_check_mark: Testing is completed. The report is available here: https://rustambek-dot.github.io/LiveCoding/" }'
       - name: failure
-        if: needs.test.outputs.first_test == 'failure' || needs.test.outputs.second_test == 'failure' || needs.test.outputs.all = 'failure'
+        if: needs.test.outputs.first_test == 'failure' || needs.test.outputs.second_test == 'failure' || needs.test.outputs.all == 'failure'
         run: |
           curl --location 'https://hooks.slack.com/services/${{ secrets.st_slack }}' --header 'Content-Type:application/json' --data '{"text":"The repository is available here: https://github.com/Rustambek-dot/New-CI-CD/ ,:rage: Testing is completed. The report is available here: https://rustambek-dot.github.io/LiveCoding/"}'   
 
